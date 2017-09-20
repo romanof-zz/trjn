@@ -6,8 +6,7 @@ class CreateTransits < ActiveRecord::Migration[5.0]
       t.integer :end_milestone_id
       t.integer :journey_id
       t.text    :description
-      t.float   :price
-      t.integer :duration
+      t.integer :price
       t.timestamps
     end
   end

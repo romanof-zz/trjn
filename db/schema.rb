@@ -15,10 +15,10 @@ ActiveRecord::Schema.define(version: 20170920161835) do
   create_table "journeys", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
     t.integer  "people_count"
-    t.float    "budget",       limit: 24
-    t.float    "budget_min",   limit: 24
-    t.float    "budget_max",   limit: 24
-    t.float    "duration",     limit: 24
+    t.integer  "budget"
+    t.integer  "budget_min"
+    t.integer  "budget_max"
+    t.integer  "duration"
     t.text     "description",  limit: 65535
     t.text     "location",     limit: 65535
     t.integer  "author_id"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20170920161835) do
     t.string   "name"
     t.text     "location",    limit: 65535
     t.text     "description", limit: 65535
+    t.integer  "duration"
     t.integer  "journey_id"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
@@ -41,8 +42,7 @@ ActiveRecord::Schema.define(version: 20170920161835) do
     t.integer  "end_milestone_id"
     t.integer  "journey_id"
     t.text     "description",        limit: 65535
-    t.float    "price",              limit: 24
-    t.integer  "duration"
+    t.integer  "price"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
   end

@@ -5,7 +5,7 @@ namespace :db do
   env = ENV['RACK_ENV'] || 'development'
   db_config = YAML::load(File.open('config/database.yml'))[env]
   db_config_admin = db_config.merge({
-    'database' => 'mysql', 
+    'database' => 'mysql',
     'schema_search_path' => 'public'
   })
 
@@ -31,8 +31,15 @@ namespace :db do
     puts "Database deleted."
   end
 
+  desc "Seed the database"
+  task :seed do
+    ActiveRecord::Base.establish_connection(db_config)
+    require_relative 'db/seed'
+    puts "Database seeded."
+  end
+
   desc "Reset the database"
-  task :reset => [:drop, :create, :migrate]
+  task :reset => [:drop, :create, :migrate, :seed]
 
   desc 'Create a db/schema.rb file that is portable against any DB supported by AR'
   task :schema do

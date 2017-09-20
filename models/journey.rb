@@ -1,5 +1,5 @@
-class Firm < ActiveRecord::Base
+class Journey < ActiveRecord::Base
   has_many   :milestones
   has_many   :transits
-  belongs_to :author, classname: "User", foreign_key: "author_id"
+  belongs_to :author, class_name: "User", foreign_key: "author_id"
 end

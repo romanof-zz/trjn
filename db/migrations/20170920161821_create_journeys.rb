@@ -3,10 +3,10 @@ class CreateJourneys < ActiveRecord::Migration[5.0]
     create_table :journeys do |t|
       t.string  :title
       t.integer :people_count
-      t.float   :budget
-      t.float   :budget_min
-      t.float   :budget_max
-      t.float   :duration
+      t.integer :budget
+      t.integer :budget_min
+      t.integer :budget_max
+      t.integer :duration
       t.text    :description
       t.text    :location
       t.integer :author_id
