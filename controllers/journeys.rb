@@ -1,25 +1,12 @@
 # GET /journey/1/json
-get '/journey/:id/:format?', provides: ['html', 'json'] do
-  @model = Journey.find_by_id(params[:id])
-
-  case params[:format]
-  when 'html'
-    haml :journey, locals: {journey: @model}
-  else
-    @model.to_json
-  end
+get '/journeys/:id' do
+  Journey.find_by_id(params[:id]).to_json
 end
 
-# GET /journeys/geojson
-get '/journeys/:format', provides: ['json', 'geojson'] do
-  @journeys = Journey.all
-
-  case params[:format]
-  when 'json'
-    @journeys.to_json
-  when 'geojson'
-    @journeys.map { |j|
-      loc = j.location.split(",")
+# GET /journeys
+get '/journeys' do
+  Journey.all.map { |j|
+    loc = j.location.split(",")
       {
         type: 'Feature',
         properties: {
@@ -32,6 +19,5 @@ get '/journeys/:format', provides: ['json', 'geojson'] do
           coordinates: [loc[1].to_f, loc[0].to_f]
         }
       }
-    }.to_json
-  end
+  }.to_json
 end

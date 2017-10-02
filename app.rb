@@ -10,5 +10,5 @@ ActiveRecord::Base.establish_connection(
 set :public_folder, 'static'
 
 get '/' do
-  haml :index
+  send_file 'static/app/index.html'
 end
