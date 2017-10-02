@@ -1,4 +1,4 @@
-# GET /journey/1/json
+# GET /journey/1
 get '/journeys/:id' do
   Journey.find_by_id(params[:id]).to_json
 end
@@ -10,6 +10,7 @@ get '/journeys' do
       {
         type: 'Feature',
         properties: {
+          id: j.id,
           title: j.title,
           budget: j.budget,
           duration: j.duration,

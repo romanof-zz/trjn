@@ -13,7 +13,7 @@ angular.
         })
         .locate({
           setView: true,
-          maxZoom: 4
+          maxZoom: 1
         });
 
         L.tileLayer("http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg", {
@@ -37,11 +37,12 @@ angular.
 
         self.journeys = Journey.query(function() {
           L.geoJSON(self.journeys, {
-              onEachFeature: function(feature, layer) {
-                if (feature.properties) {
-                  var text = feature.properties.title + "<br />" +
-                             feature.properties.budget + "$<br />" +
-                             feature.properties.duration + " days";
+              onEachFeature: function(journey, layer) {
+                if (journey.properties) {
+                  var text = '<a href="#!/journeys/' + journey.properties.id + '">' +
+                  journey.properties.title + '</a>' +
+                  '<p><span class="budget">' + journey.properties.budget + '$</span> for ' +
+                  journey.properties.duration + ' days</p>';
                   layer.bindPopup(text);
                 }
               }

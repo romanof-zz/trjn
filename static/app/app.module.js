@@ -4,5 +4,6 @@
 angular.module('trjn', [
   'ngRoute',
   'core',
-  'journeyList'
+  'journeyList',
+  'journeyDetail'
 ]);

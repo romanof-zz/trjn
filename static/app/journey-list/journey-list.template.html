@@ -1,1 +1,14 @@
-<div id="mapid"></div>
+<div class="content">
+  <div id="mapid"></div>
+  <div id="list">
+    <ul>
+      <li ng-repeat="journey in $ctrl.journeys" class="journey-list-item">
+        <a href="#!/journeys/{{journey.properties.id}}">{{journey.properties.title}}</a>
+        <p>
+          <span class="budget">{{journey.properties.budget}}$</span>
+          for {{journey.properties.duration}} days
+        </p>
+      </li>
+    </ul>
+  </div>
+</div>

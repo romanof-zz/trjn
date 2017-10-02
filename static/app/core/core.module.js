@@ -2,5 +2,6 @@
 
 // Define the `core` module
 angular.module('core', [
-  'core.journey'
+  'core.journey',
+  'core.user',
 ]);
