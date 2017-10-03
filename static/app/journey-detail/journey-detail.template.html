@@ -1,6 +1,29 @@
 <div class="content journey-detail">
-  <h4>{{$ctrl.journey.title}}</h4>
-  <h5><i><span class="budget">Budget: {{$ctrl.journey.budget}}$</span> for {{$ctrl.journey.duration}} days</i></h4>
-  <div ng-bind-html="$ctrl.journey.description"></div>
-  <small>Posted: {{$ctrl.journey.updated_at | date:'medium'}} by <b>{{$ctrl.author.name}}</b></small>
+  <div class="row">
+    <div class="col-8">
+      <div class="info">
+        <h4>{{$ctrl.journey.title}}</h4>
+        <h5><i><span class="budget">Budget: {{$ctrl.journey.budget}}$</span> for {{$ctrl.journey.duration}} days</i></h4>
+        <div ng-bind-html="$ctrl.journey.description"></div>
+        <small>Posted: {{$ctrl.journey.updated_at | date:'medium'}} by <b>{{$ctrl.author.name}}</b></small>
+      </div>
+      <div class="milestone-list">
+        <div ng-repeat="milestone in $ctrl.milestones">
+          <p ng-class="{true: 'selected'}[milestone == $ctrl.selected_milestone]">
+            {{$index+1}}.
+            <a  href="#!/journeys/{{$ctrl.journey.id}}?milestone={{milestone.properties.position}}">
+              {{milestone.properties.name}}
+            </a>
+            for {{milestone.properties.duration}} days
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="map" class="col-4"></div>
+  </div>
+  <div class="row milestone-detail">
+    <div class="col-12">
+      {{$ctrl.selected_milestone.properties.description}}
+    </div>
+  </div>
 </div>

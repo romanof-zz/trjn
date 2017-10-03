@@ -10,7 +10,7 @@ ecuador = Journey.where(
   budget_max: 700,
   duration: 14,
   description: "<p> That was one of the most extereme and exciting adventures of all time for me. Including old city exploration, exteded trekking, concuring the highest peak, I've even been to! And on top of that surfing and chilling in a surfer village!</p>",
-  location: '-0.950273813607327,-78.65318298339844',
+  location: '-0.900842,-79.804687',
   author_id: me.id
 ).first_or_create
 
@@ -19,7 +19,8 @@ quito = Milestone.where(
   location: '-0.1806532,-78.4678382',
   journey_id: ecuador.id,
   duration: 2,
-  description: 'TBD'
+  position: 1,
+  description: 'Quito Story TBD'
 ).first_or_create
 
 quilotoa = Milestone.where(
@@ -27,7 +28,8 @@ quilotoa = Milestone.where(
   location: '-0.77966191,-78.90604019',
   journey_id: ecuador.id,
   duration: 5,
-  description: 'TBD'
+  position: 2,
+  description: 'Sigchos - Quilotoa Lake Story TBD'
 ).first_or_create
 
 chimborazo = Milestone.where(
@@ -35,7 +37,8 @@ chimborazo = Milestone.where(
   location: '-1.4693018,-78.8169396',
   journey_id: ecuador.id,
   duration: 2,
-  description: 'TBD'
+  position: 3,
+  description: 'Chimborazo Story TBD'
 ).first_or_create
 
 montanita = Milestone.where(
@@ -43,7 +46,8 @@ montanita = Milestone.where(
   location: '-1.8268465,-80.7529731',
   journey_id: ecuador.id,
   duration: 4,
-  description: 'TBD'
+  position: 4,
+  description: 'Montañita Story TBD'
 ).first_or_create
 
 guayaquil = Milestone.where(
@@ -51,7 +55,8 @@ guayaquil = Milestone.where(
   location: '-2.1709979,-79.9223592',
   journey_id: ecuador.id,
   duration: 1,
-  description: 'TBD'
+  position: 5,
+  description: 'Guayaquil Story TBD'
 ).first_or_create
 
 Transit.where(

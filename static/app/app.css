@@ -14,7 +14,7 @@ header {
 small {
   font-size: 80%;
   line-height: 1.42857143;
-  color: #777;  
+  color: #777;
 }
 
 header section.logo {
@@ -39,7 +39,11 @@ ul, li {
   position: relative;
 }
 
-#mapid {
+.row {
+  margin: 0px;
+}
+
+.journey-list #map {
   height: inherit;
 }
 
@@ -69,6 +73,37 @@ ul, li {
   color: green;
 }
 
-.journey-detail {
-  margin: 20px;
+.journey-detail #map {
+  height: 400px;
+  float: right;
+  padding: 0px;
+}
+
+.journey-detail .info {
+  padding: 15px;
+}
+
+.journey-detail  .milestone-list {
+  border-top: 1px dashed #e1e1e8;
+  margin: 15px;
+  padding-top: 15px
+}
+
+.journey-detail .milestone-detail {
+  border-top: 1px solid #e1e1e8;
+  padding: 15px;
+}
+
+.geo-milestone {
+  border-radius: 50%;
+  border: 1px solid #e1e1e8;
+  background-color: white;
+  text-align: center;
+  padding-top: 5px;
+  color: grey;
+}
+
+.selected, .selected a {
+  color: red;
+  border-color: red;
 }

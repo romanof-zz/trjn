@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20170920161835) do
     t.text     "location",    limit: 65535
     t.text     "description", limit: 65535
     t.integer  "duration"
+    t.integer  "position"
     t.integer  "journey_id"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false

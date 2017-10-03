@@ -1,3 +1,6 @@
 'use strict';
 
-angular.module('journeyList', ['core.journey']);
+angular.module('journeyList', [
+  'core.services',
+  'core.map'
+]);
