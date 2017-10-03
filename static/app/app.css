@@ -89,6 +89,10 @@ ul, li {
   padding-top: 15px
 }
 
+.journey-detail  .milestone-list .milestone  {
+  cursor: pointer;
+}
+
 .journey-detail .milestone-detail {
   border-top: 1px solid #e1e1e8;
   padding: 15px;

@@ -9,13 +9,10 @@
       </div>
       <div class="milestone-list">
         <div ng-repeat="milestone in $ctrl.milestones">
-          <p ng-class="{true: 'selected'}[milestone == $ctrl.selected_milestone]">
-            {{$index+1}}.
-            <a  href="#!/journeys/{{$ctrl.journey.id}}?milestone={{milestone.properties.position}}">
-              {{milestone.properties.name}}
-            </a>
-            for {{milestone.properties.duration}} days
-          </p>
+          <div ng-click="$ctrl.setSelectedMilestone(milestone.properties.id)"
+               class="milestone milestone-{{milestone.properties.position}}">
+            {{milestone.properties.position}}. {{milestone.properties.name}} for {{milestone.properties.duration}} days
+          </div>
         </div>
       </div>
     </div>
@@ -23,7 +20,8 @@
   </div>
   <div class="row milestone-detail">
     <div class="col-12">
-      {{$ctrl.selected_milestone.properties.description}}
+      <h2>{{$ctrl.selected_milestone.name}}</h2>
+      <div>{{$ctrl.selected_milestone.description}}</div>
     </div>
   </div>
 </div>

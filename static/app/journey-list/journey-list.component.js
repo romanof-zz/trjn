@@ -18,7 +18,7 @@ angular.
           L.geoJSON(self.journeys, {
               onEachFeature: function(journey, layer) {
                 if (journey.properties) {
-                  var text = '<a href="#!/journeys/' + journey.properties.id + '?milestone=1">' +
+                  var text = '<a href="#!/journeys/' + journey.properties.id + '">' +
                   journey.properties.title + '</a>' +
                   '<p><span class="budget">' + journey.properties.budget + '$</span> for ' +
                   journey.properties.duration + ' days</p>';

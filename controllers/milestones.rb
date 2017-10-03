@@ -1,3 +1,8 @@
+# GET /milestones/1
+get '/milestones/:id' do
+  Milestone.find_by_id(params[:id]).to_json
+end
+
 # GET /milestones?journey_id=1
 get '/milestones' do
   Milestone.where(journey_id: params[:journey_id]).map { |m|
@@ -8,8 +13,7 @@ get '/milestones' do
           id: m.id,
           name: m.name,
           duration: m.duration,
-          position: m.position,
-          description: m.description
+          position: m.position
         },
         geometry: {
           type: 'Point',
