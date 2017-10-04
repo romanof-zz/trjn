@@ -1,7 +1,7 @@
 'use strict';
 
 angular.
-  module('core.services').
+  module('core.service').
   factory('User', ['$resource',
     function($resource) {
       return $resource('/users/:id');

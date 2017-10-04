@@ -4,11 +4,11 @@ angular.
   module('journeyList').
   component('journeyList', {
     templateUrl: 'app/journey-list/journey-list.template.html',
-    controller: ['Journey', 'MapFactory',
-      function JourneyListController(Journey, MapFactory) {
+    controller: ['Journey', 'UIHelper',
+      function JourneyListController(Journey, UIHelper) {
         self = this;
 
-        self.map = MapFactory.init();
+        self.map = UIHelper.initMap();
         self.map.locate({
           setView: true,
           maxZoom: 1

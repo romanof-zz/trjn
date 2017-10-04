@@ -11,8 +11,13 @@
         <div ng-repeat="milestone in $ctrl.milestones">
           <div ng-click="$ctrl.setSelectedMilestone(milestone.properties.id)"
                class="milestone milestone-{{milestone.properties.position}}">
-            {{milestone.properties.position}}. {{milestone.properties.name}} for {{milestone.properties.duration}} days
+            <p>{{milestone.properties.position}}. {{milestone.properties.name}} for {{milestone.properties.duration}} days</p>
           </div>
+          <small ng-if="$ctrl.transits[milestone.properties.position]">
+            [{{$ctrl.uihelper.transitType($ctrl.transits[milestone.properties.position].transit_type)}}]
+            {{$ctrl.transits[milestone.properties.position].description}}
+            <span class="budget">({{$ctrl.transits[milestone.properties.position].price}}$)</span>
+          </small>
         </div>
       </div>
     </div>

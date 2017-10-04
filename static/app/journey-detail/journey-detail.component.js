@@ -4,18 +4,19 @@ angular.
   module('journeyDetail').
   component('journeyDetail', {
     templateUrl: 'app/journey-detail/journey-detail.template.html',
-    controller: ['$routeParams', 'Journey', 'User', 'Milestone', 'MapFactory',
-      function JourneyDetailController($routeParams, Journey, User, Milestone, MapFactory) {
+    controller: ['$routeParams', '$filter', 'Journey', 'User', 'Milestone', 'Transit', 'UIHelper',
+      function JourneyDetailController($routeParams, $filter, Journey, User, Milestone, Transit, UIHelper) {
         var self = this;
 
-        self.map = MapFactory.init();
+        self.uihelper = UIHelper;
+        self.map = UIHelper.initMap();
 
         self.setSelectedMilestone = function(id) {
           self.selected_milestone = Milestone.get({id: id}, function(m) {
-            $(".geo-milestone").removeClass("selected");
-            $(".geo-milestone-" + m.position).addClass("selected");
-            $(".milestone").removeClass("selected");
-            $(".milestone-" + m.position).addClass("selected");
+            angular.element(document.querySelectorAll(".geo-milestone")).removeClass("selected");
+            angular.element(document.querySelector(".geo-milestone-" + m.position)).addClass("selected");
+            angular.element(document.querySelectorAll(".milestone")).removeClass("selected");
+            angular.element(document.querySelector(".milestone-" + m.position)).addClass("selected");
           });
         };
 
@@ -44,6 +45,25 @@ angular.
 
               // set first milestone as current.
               self.setSelectedMilestone(self.milestones[0].properties.id);
+
+              // load transits between milestones.
+              self.transits = [];
+              Transit.query({journey_id: $routeParams.journeyId}, function (transits) {
+                angular.forEach(transits, function(transit, key) {
+                  var start_milestone = $filter('filter')(self.milestones, {'properties': {'id':transit.start_milestone_id}})[0];
+                  var end_milestone = $filter('filter')(self.milestones, {'properties': {'id':transit.end_milestone_id}})[0];
+                  self.transits[start_milestone.properties.position] = transit;
+
+                  var latlngs = [];
+                  latlngs.push(new L.LatLng(start_milestone.geometry.coordinates[1],
+                                            start_milestone.geometry.coordinates[0]));
+                  latlngs.push(new L.LatLng(end_milestone.geometry.coordinates[1],
+                                            end_milestone.geometry.coordinates[0]));
+
+
+                  L.polyline(latlngs).addTo(self.map);
+                });
+              });
             });
           });
       }

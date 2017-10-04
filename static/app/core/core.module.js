@@ -2,6 +2,5 @@
 
 // Define the `core` module
 angular.module('core', [
-  'core.services',
-  'core.map'
+  'core.service'
 ]);

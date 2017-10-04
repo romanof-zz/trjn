@@ -60,7 +60,7 @@ guayaquil = Milestone.where(
 ).first_or_create
 
 Transit.where(
- type: 1,
+ transit_type: 1,
  journey_id: ecuador.id,
  start_milestone_id: quito.id,
  end_milestone_id: quilotoa.id,
@@ -69,7 +69,7 @@ Transit.where(
 ).first_or_create
 
 Transit.where(
- type: 2,
+ transit_type: 2,
  journey_id: ecuador.id,
  start_milestone_id: quilotoa.id,
  end_milestone_id: chimborazo.id,
@@ -78,7 +78,7 @@ Transit.where(
 ).first_or_create
 
 Transit.where(
- type: 3,
+ transit_type: 3,
  journey_id: ecuador.id,
  start_milestone_id: chimborazo.id,
  end_milestone_id: montanita.id,
@@ -87,7 +87,7 @@ Transit.where(
 ).first_or_create
 
 Transit.where(
- type: 2,
+ transit_type: 2,
  journey_id: ecuador.id,
  start_milestone_id: montanita.id,
  end_milestone_id: guayaquil.id,

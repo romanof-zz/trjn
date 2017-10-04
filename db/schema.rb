@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20170920161835) do
   end
 
   create_table "transits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "type"
+    t.integer  "transit_type"
     t.integer  "start_milestone_id"
     t.integer  "end_milestone_id"
     t.integer  "journey_id"

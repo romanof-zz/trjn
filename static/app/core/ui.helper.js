@@ -1,9 +1,9 @@
 'use strict';
 
-angular.module('core.map', [])
-  .factory("MapFactory", function() {
+angular.module('core', [])
+  .factory("UIHelper", function MapFactory() {
     return {
-      init: function(id = 'map') {
+      initMap: function(id = 'map') {
         var map = L.map(id, {
           doubleClickZoom: false
         });
@@ -28,6 +28,16 @@ angular.module('core.map', [])
         });
 
         return map;
+      },
+
+      transitType: function(type) {
+        self.types = [
+          /* 0 */ "walk",
+          /* 1 */ "public transport",
+          /* 2 */ "private transport",
+          /* 3 */ "airplane",
+        ];
+        return self.types[type];
       }
    }
  });
