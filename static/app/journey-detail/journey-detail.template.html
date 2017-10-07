@@ -5,7 +5,7 @@
         <h4>{{$ctrl.journey.title}}</h4>
         <h5><i><span class="budget">Budget: {{$ctrl.journey.budget}}$</span> for {{$ctrl.journey.duration}} days</i></h4>
         <div ng-bind-html="$ctrl.journey.description"></div>
-        <small>Posted: {{$ctrl.journey.updated_at | date:'medium'}} by <b>{{$ctrl.author.name}}</b></small>
+        <small>Posted: {{$ctrl.journey.updated_at | date:'medium'}} by <b>{{$ctrl.author.fullname}}</b></small>
       </div>
       <div class="milestone-list">
         <div ng-repeat="milestone in $ctrl.milestones">

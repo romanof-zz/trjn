@@ -1,11 +1,18 @@
 require 'sinatra'
+require 'rack'
+require 'rack/contrib'
 require "active_record"
 
 Dir[File.dirname(__FILE__) + '/models/*.rb'].each {|f| require f}
 Dir[File.dirname(__FILE__) + '/controllers/*.rb'].each {|f| require f}
 
-ActiveRecord::Base.establish_connection(
-  YAML::load(File.open('config/database.yml'))[settings.environment.to_s])
+
+configure do
+  use Rack::PostBodyContentTypeParser
+  set :config, YAML::load(File.open("config.#{settings.environment}.yml")).deep_symbolize_keys
+end
+
+ActiveRecord::Base.establish_connection(settings.config[:database])
 
 set :public_folder, 'static'
 

@@ -1,4 +1,8 @@
 # GET /users/1
 get '/users/:id' do
-  User.find_by_id(params[:id]).to_json
+  user = User.find_by_id(params[:id])
+  {
+    id: user.id,
+    fullname: user.fullname
+  }.to_json
 end

@@ -3,7 +3,7 @@ require 'yaml'
 
 namespace :db do
   env = ENV['RACK_ENV'] || 'development'
-  db_config = YAML::load(File.open('config/database.yml'))[env]
+  db_config = YAML::load(File.open("config.#{env}.yml")).symbolize_keys![:database]
   db_config_admin = db_config.merge({
     'database' => 'mysql',
     'schema_search_path' => 'public'

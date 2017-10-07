@@ -1,6 +1,17 @@
 Dir[File.dirname(__FILE__) + '/../models/*.rb'].each {|f| require f}
 
-me = User.where(name: 'romanof').first_or_create
+me = User.where(
+  username: 'romanOf',
+  fullname: 'Sergii Romanov',
+  email: 'romanov.sergii@gmail.com',
+  picture: 'https://scontent.cdninstagram.com/t51.2885-19/s150x150/19534042_1467415436655353_4366402617996214272_a.jpg'
+).first_or_create
+
+Identity.where(
+  user_id: me.id,
+  external_id: '23620335',
+  provider: 'instagram'
+).first_or_create
 
 ecuador = Journey.where(
   title: "Ecuador 2015",

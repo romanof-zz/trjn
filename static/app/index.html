@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="lib/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" href="lib/bootstrap.css" />
     <link rel="stylesheet" href="lib/leaflet/leaflet.css" />
 
     <link rel="stylesheet" href="app/app.css" />
@@ -16,6 +16,7 @@
     <script type="text/javascript" src="lib/angular/angular-route.js"></script>
     <script type="text/javascript" src="lib/angular/angular-resource.js"></script>
     <script type="text/javascript" src="lib/angular/angular-sanitize.js"></script>
+    <script type="text/javascript" src="lib/satellizer.js"></script>
 
     <script type="text/javascript" src="app/app.module.js"></script>
     <script type="text/javascript" src="app/app.config.js"></script>
@@ -25,8 +26,12 @@
     <script type="text/javascript" src="app/core/service/service.module.js"></script>
     <script type="text/javascript" src="app/core/service/journey.service.js"></script>
     <script type="text/javascript" src="app/core/service/user.service.js"></script>
+    <script type="text/javascript" src="app/core/service/session.service.js"></script>
     <script type="text/javascript" src="app/core/service/milestone.service.js"></script>
     <script type="text/javascript" src="app/core/service/transit.service.js"></script>
+
+    <script type="text/javascript" src="app/user-menu/user-menu.module.js"></script>
+    <script type="text/javascript" src="app/user-menu/user-menu.component.js"></script>
 
     <script type="text/javascript" src="app/journey-list/journey-list.module.js"></script>
     <script type="text/javascript" src="app/journey-list/journey-list.component.js"></script>
@@ -38,7 +43,7 @@
       <header class="row">
         <section class="col-md-2 logo"><h3 class="text-center"><a href="/">Logo</a></h2></section>
         <section class="col-md-7"></section>
-        <section class="col-md-3 user">User Section</section>
+        <section class="col-md-3 user"><user-menu></user-menu></section>
       </header>
       <main ng-view></main>
   </body>
