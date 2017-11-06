@@ -1,9 +1,0 @@
-<div class="user-menu">
-  <div ng-if="!isAuthenticated()">
-    SignIn with <button ng-click="$ctrl.authenticate('google')">Google</button>
-  </div>
-  <div ng-if="isAuthenticated()">
-    <img ng-src="{{currentUser.picture}}" /> {{currentUser.username}}
-    <button ng-click="$ctrl.logout()">Logout</button>
-  </div>
-</div>
