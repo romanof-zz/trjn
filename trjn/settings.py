@@ -73,6 +73,19 @@ TEMPLATES = [
     },
 ]
 
+# WYCIWYG
+# http://django-tinymce.readthedocs.io/en/latest/installation.html
+
+TINYMCE_DEFAULT_CONFIG = {
+    'plugins': "table,spellchecker,paste,searchreplace",
+    'theme': "advanced",
+    'cleanup_on_startup': True,
+    'custom_undo_redo_levels': 10,
+    'width': '100%',
+    'height': 300
+}
+TINYMCE_SPELLCHECKER = True
+
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
