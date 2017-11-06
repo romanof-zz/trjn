@@ -1,0 +1,11 @@
+<div class="content post-list">
+  <div id="list">
+    <ul>
+      <li ng-repeat="post in $ctrl.posts" class="post-list-item">
+        <a href="#!/posts/{{post.id}}">{{post.name}}</a>
+        <p>{{post.text}}</p>
+        <small>By {{post.author.fullname}} on {{post.created_at}}</small>
+      </li>
+    </ul>
+  </div>
+</div>

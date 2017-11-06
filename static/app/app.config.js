@@ -11,6 +11,12 @@ angular.
       });
 
       $routeProvider.
+        when('/posts', {
+          template: '<post-list></post-list>'
+        }).
+        when('/posts/:postId', {
+          template: '<post-detail></post-detail>'
+        }).
         when('/journeys', {
           template: '<journey-list></journey-list>'
         }).

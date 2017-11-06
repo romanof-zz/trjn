@@ -1,0 +1,5 @@
+<div class="post-detail">
+  <b>{{$ctrl.post.name}}</b>
+  <div ng-bind-html="$ctrl.post.text"></div>
+  <small>By {{$ctrl.post.author.fullname}} on {{$ctrl.post.created_at}}</small>
+</div>

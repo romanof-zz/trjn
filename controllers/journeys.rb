@@ -5,7 +5,7 @@ end
 
 # GET /journeys
 get '/journeys' do
-  Journey.all.map { |j|
+  Journey.order(created_at: :desc).limit(20).map { |j|
     loc = j.location.split(",")
       {
         type: 'Feature',

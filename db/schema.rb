@@ -10,65 +10,88 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171006170229) do
+ActiveRecord::Schema.define(version: 20171023143432) do
 
-  create_table "identities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "provider"
-    t.string   "user_id"
-    t.string   "external_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+  create_table "identities", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "provider"
+    t.string "user_id"
+    t.string "external_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "journeys", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "title"
-    t.integer  "people_count"
-    t.integer  "budget"
-    t.integer  "budget_min"
-    t.integer  "budget_max"
-    t.integer  "duration"
-    t.text     "description",  limit: 65535
-    t.text     "location",     limit: 65535
-    t.integer  "author_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+  create_table "journeys", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "title"
+    t.integer "people_count"
+    t.integer "budget"
+    t.integer "budget_min"
+    t.integer "budget_max"
+    t.integer "duration"
+    t.text "description"
+    t.text "location"
+    t.integer "author_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "milestones", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
-    t.text     "location",    limit: 65535
-    t.text     "description", limit: 65535
-    t.integer  "duration"
-    t.integer  "position"
-    t.integer  "journey_id"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+  create_table "milestones", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.text "location"
+    t.text "description"
+    t.integer "duration"
+    t.integer "position"
+    t.integer "journey_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "sessions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "session_id"
-    t.string   "user_id"
-    t.string   "access_token"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+  create_table "posts", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.text "text"
+    t.integer "published"
+    t.integer "author_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "transits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "transit_type"
-    t.integer  "start_milestone_id"
-    t.integer  "end_milestone_id"
-    t.integer  "journey_id"
-    t.text     "description",        limit: 65535
-    t.integer  "price"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+  create_table "posts_tags", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "post_id"
+    t.string "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "username"
-    t.string   "fullname"
-    t.string   "email"
-    t.string   "picture"
+  create_table "sessions", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "session_id"
+    t.string "user_id"
+    t.string "access_token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tags", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.string "posts_count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "transits", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "transit_type"
+    t.integer "start_milestone_id"
+    t.integer "end_milestone_id"
+    t.integer "journey_id"
+    t.text "description"
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "username"
+    t.string "fullname"
+    t.string "email"
+    t.string "picture"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
