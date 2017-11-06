@@ -12,11 +12,51 @@ class JourneyAdmin(admin.ModelAdmin):
         obj.author = request.user
         super(JourneyAdmin, self).save_model(request, obj, form, change)
 
+    def get_queryset(self, request):
+        qs = super(JourneyAdmin, self).get_queryset(request)
+        print(qs)
+        if request.user.is_superuser:
+            return qs
+        return qs.filter(author=request.user)
+
 class MilestoneAdmin(admin.ModelAdmin):
     list_display = ('title', 'journey', 'position', 'duration', 'updated_at')
+    ordering = ('journey', 'position')
+
+    def get_queryset(self, request):
+        qs = super(MilestoneAdmin, self).get_queryset(request)
+        print(qs)
+        if request.user.is_superuser:
+            return qs
+
+        journeys = Journey.objects.filter(author=request.user)
+        return qs.filter(journey=journeys)
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == 'journey':
+            if not request.user.is_superuser:
+                kwargs["queryset"] = Journey.objects.filter(
+                    author=request.user)
+        return super(MilestoneAdmin, self).formfield_for_foreignkey(db_field, request, **kwargs)
 
 class TransitAdmin(admin.ModelAdmin):
     list_display = ('journey', 'transit_type', 'start_milestone', 'end_milestone', 'updated_at')
+
+    def get_queryset(self, request):
+        qs = super(TransitAdmin, self).get_queryset(request)
+        print(qs)
+        if request.user.is_superuser:
+            return qs
+
+        journeys = Journey.objects.filter(author=request.user)
+        return qs.filter(journey=journeys)
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == 'journey':
+            if not request.user.is_superuser:
+                kwargs["queryset"] = Journey.objects.filter(
+                    author=request.user)
+        return super(TransitAdmin, self).formfield_for_foreignkey(db_field, request, **kwargs)
 
 # Register your models here.
 admin.site.register(Journey, JourneyAdmin)
