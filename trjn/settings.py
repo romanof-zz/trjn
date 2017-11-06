@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'journeys.apps.JourneysConfig',
     'users.apps.UsersConfig',
     'posts.apps.PostsConfig',
+    'tinymce',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
