@@ -5,16 +5,16 @@ from tinymce.models import HTMLField
 from django.conf import settings
 
 class Journey(models.Model):
+    published = models.BooleanField(default=False)
     title = models.CharField(max_length=1024)
-    people_count = models.IntegerField()
     budget = models.DecimalField(max_digits=20, decimal_places=2)
     budget_min = models.DecimalField(max_digits=20, decimal_places=2)
     budget_max = models.DecimalField(max_digits=20, decimal_places=2)
+    people_count = models.IntegerField()
     duration = models.IntegerField()
-    description = HTMLField()
     location = models.CharField(max_length=1024)
+    description = HTMLField()
     author = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="journey_author", on_delete=models.CASCADE)
-    published = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -23,10 +23,10 @@ class Journey(models.Model):
 
 class Milestone(models.Model):
     title = models.CharField(max_length=1024)
+    duration = models.PositiveSmallIntegerField(default=0)
+    position = models.PositiveSmallIntegerField(default=0)
     location = models.CharField(max_length=1024)
     description = HTMLField()
-    duration = models.IntegerField()
-    position = models.IntegerField()
     journey = models.ForeignKey('Journey', related_name="milestone_journey", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -45,8 +45,8 @@ class Transit(models.Model):
     journey = models.ForeignKey('Journey', related_name="transit_journey", on_delete=models.CASCADE)
     start_milestone = models.ForeignKey('Milestone', related_name="transit_start_milestone", on_delete=models.PROTECT)
     end_milestone = models.ForeignKey('Milestone', related_name="transit_end_milestone", on_delete=models.PROTECT)
-    description = models.TextField()
     price = models.DecimalField(max_digits=20, decimal_places=2)
+    description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

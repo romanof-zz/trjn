@@ -2,9 +2,41 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
+from django.forms import ModelForm, HiddenInput
 from .models import (Journey, Milestone, Transit)
+import nested_admin
 
-class JourneyAdmin(admin.ModelAdmin):
+class MilestoneAdminForm(ModelForm):
+    class Meta:
+        fields = ['title', 'position', 'duration', 'location', 'description']
+        model = Milestone
+        widgets = {
+            'position': HiddenInput()
+        }
+
+class MilestoneAdmin(nested_admin.NestedStackedInline):
+    model = Milestone
+    form = MilestoneAdminForm
+    ordering = ('position',)
+    sortable_field_name = 'position'
+    classes = ('collapse',)
+    extra = 0
+
+class TransitAdmin(nested_admin.NestedStackedInline):
+    model = Transit
+    classes = ('collapse',)
+    extra = 0
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name in ['start_milestone', 'end_milestone']:
+            try:
+                kwargs["queryset"] = Milestone.objects.filter(journey__id=int(request.path.split('/')[4]))
+            except ValueError:
+                kwargs["queryset"] = Milestone.objects.none()
+        return super(TransitAdmin, self).formfield_for_foreignkey(db_field, request, **kwargs)
+
+class JourneyAdmin(nested_admin.NestedModelAdmin):
+    inlines = [MilestoneAdmin, TransitAdmin]
     list_display = ('title', 'author', 'published', 'updated_at')
     exclude = ('author',)
 
@@ -14,51 +46,9 @@ class JourneyAdmin(admin.ModelAdmin):
 
     def get_queryset(self, request):
         qs = super(JourneyAdmin, self).get_queryset(request)
-        print(qs)
         if request.user.is_superuser:
             return qs
         return qs.filter(author=request.user)
 
-class MilestoneAdmin(admin.ModelAdmin):
-    list_display = ('title', 'journey', 'position', 'duration', 'updated_at')
-    ordering = ('journey', 'position')
-
-    def get_queryset(self, request):
-        qs = super(MilestoneAdmin, self).get_queryset(request)
-        print(qs)
-        if request.user.is_superuser:
-            return qs
-
-        journeys = Journey.objects.filter(author=request.user)
-        return qs.filter(journey=journeys)
-
-    def formfield_for_foreignkey(self, db_field, request, **kwargs):
-        if db_field.name == 'journey':
-            if not request.user.is_superuser:
-                kwargs["queryset"] = Journey.objects.filter(
-                    author=request.user)
-        return super(MilestoneAdmin, self).formfield_for_foreignkey(db_field, request, **kwargs)
-
-class TransitAdmin(admin.ModelAdmin):
-    list_display = ('journey', 'transit_type', 'start_milestone', 'end_milestone', 'updated_at')
-
-    def get_queryset(self, request):
-        qs = super(TransitAdmin, self).get_queryset(request)
-        print(qs)
-        if request.user.is_superuser:
-            return qs
-
-        journeys = Journey.objects.filter(author=request.user)
-        return qs.filter(journey=journeys)
-
-    def formfield_for_foreignkey(self, db_field, request, **kwargs):
-        if db_field.name == 'journey':
-            if not request.user.is_superuser:
-                kwargs["queryset"] = Journey.objects.filter(
-                    author=request.user)
-        return super(TransitAdmin, self).formfield_for_foreignkey(db_field, request, **kwargs)
-
 # Register your models here.
 admin.site.register(Journey, JourneyAdmin)
-admin.site.register(Milestone, MilestoneAdmin)
-admin.site.register(Transit, TransitAdmin)

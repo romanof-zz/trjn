@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'posts.apps.PostsConfig',
     'tinymce',
+    'nested_admin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
