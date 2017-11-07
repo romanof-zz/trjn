@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from django.db import models
 from tinymce.models import HTMLField
 from django.conf import settings
+from geoposition.fields import GeopositionField
 
 class Journey(models.Model):
     published = models.BooleanField(default=False)
@@ -12,7 +13,7 @@ class Journey(models.Model):
     budget_max = models.DecimalField(max_digits=20, decimal_places=2)
     people_count = models.IntegerField()
     duration = models.IntegerField()
-    location = models.CharField(max_length=1024)
+    location = GeopositionField()
     description = HTMLField()
     author = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="journey_author", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -25,7 +26,7 @@ class Milestone(models.Model):
     title = models.CharField(max_length=1024)
     duration = models.PositiveSmallIntegerField(default=0)
     position = models.PositiveSmallIntegerField(default=0)
-    location = models.CharField(max_length=1024)
+    location = GeopositionField()
     description = HTMLField()
     journey = models.ForeignKey('Journey', related_name="milestone_journey", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)

@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'posts.apps.PostsConfig',
     'tinymce',
     'nested_admin',
+    'geoposition',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -117,6 +118,19 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# GeoPosition
+# https://github.com/philippbosch/django-geoposition
+GEOPOSITION_GOOGLE_MAPS_API_KEY = os.environ.get('GOOGLE_MAPS_API_KEY')
+GEOPOSITION_MAP_OPTIONS = {
+    'minZoom': 3,
+    'maxZoom': 15,
+}
+
+GEOPOSITION_MAP_WIDGET_HEIGHT = 300
+
+GEOPOSITION_MARKER_OPTIONS = {
+    'cursor': 'move'
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
