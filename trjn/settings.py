@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'tinymce',
     'nested_admin',
     'geoposition',
+    'rest_framework',
+    'rest_framework_gis',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -74,6 +76,18 @@ TEMPLATES = [
         },
     },
 ]
+
+# DRF
+# http://www.django-rest-framework.org/
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 10
+}
 
 # WYCIWYG
 # http://django-tinymce.readthedocs.io/en/latest/installation.html
