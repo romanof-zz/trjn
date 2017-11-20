@@ -1,7 +1,16 @@
-from rest_framework.serializers import ModelSerializer
+from rest_framework.serializers import HyperlinkedModelSerializer
 from django.contrib.auth.models import User
+from .models import (Identity, Profile)
 
-class UserSerializer(ModelSerializer):
+class IdentitySerializer(HyperlinkedModelSerializer):
+    class Meta:
+        model = Identity
+        fields = (
+            'provider',
+            'external_id',
+        )
+
+class UserSerializer(HyperlinkedModelSerializer):
     class Meta:
         model = User
         fields = (
@@ -11,4 +20,18 @@ class UserSerializer(ModelSerializer):
             'last_name',
             'last_login',
             'date_joined'
+        )
+
+class ProfileSerializer(HyperlinkedModelSerializer):
+    user = UserSerializer()
+    identities = IdentitySerializer(many=True)
+
+    class Meta:
+        model = Profile
+        fields = (
+            'id',
+            'bio',
+            'picture',
+            'user',
+            'identities',
         )
