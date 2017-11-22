@@ -2,9 +2,16 @@
 from __future__ import unicode_literals
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
+@receiver(post_save, sender=User)
+def user_created(sender, instance, **kwargs):
+    if not instance.user_profile.first():
+        Profile.objects.create(user=instance)
 
 class Profile(models.Model):
-    user = models.ForeignKey(User, related_name="profile_user", on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name="user_profile", on_delete=models.CASCADE)
     bio = models.CharField(max_length=1024)
     picture = models.CharField(max_length=1024)
 

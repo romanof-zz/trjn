@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 from django.conf import settings
 from django.db import models
-from django.db.models.signals import (m2m_changed, pre_save)
+from django.db.models.signals import m2m_changed
 from django.dispatch import receiver
 from tinymce.models import HTMLField
 
