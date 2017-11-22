@@ -11,6 +11,14 @@ class IdentityAdmin(nested_admin.NestedStackedInline):
     extra = 0
 
 class ProfileAdmin(nested_admin.NestedModelAdmin):
+    readonly_fields = ('user',)
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
     inlines = [IdentityAdmin]
     list_display = ('user', 'bio')
 
