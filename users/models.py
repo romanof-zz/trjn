@@ -7,11 +7,15 @@ from django.dispatch import receiver
 
 @receiver(post_save, sender=User)
 def user_created(sender, instance, **kwargs):
-    if not instance.user_profile.first():
+    if not hasattr(instance, 'profile'):
         Profile.objects.create(user=instance)
 
 class Profile(models.Model):
-    user = models.ForeignKey(User, related_name="user_profile", on_delete=models.CASCADE)
+    user = models.OneToOneField(
+        User,
+        primary_key=True,
+        on_delete=models.CASCADE
+    )
     bio = models.CharField(max_length=1024)
     picture = models.CharField(max_length=1024)
 

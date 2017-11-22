@@ -15,7 +15,11 @@ class Journey(models.Model):
     duration = models.IntegerField()
     location = GeopositionField()
     description = HTMLField()
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="journey_author", on_delete=models.CASCADE)
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        related_name="journeys",
+        on_delete=models.CASCADE
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -28,7 +32,11 @@ class Milestone(models.Model):
     position = models.PositiveSmallIntegerField(default=0)
     location = GeopositionField()
     description = HTMLField()
-    journey = models.ForeignKey('Journey', related_name="milestone_journey", on_delete=models.CASCADE)
+    journey = models.ForeignKey(
+        'Journey',
+        related_name="milestones",
+        on_delete=models.CASCADE
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -43,9 +51,21 @@ class Transit(models.Model):
         (3, "airplane")
     )
     transit_type = models.IntegerField(choices=SUPPORTED_TRANSIT_TYPES, default=1)
-    journey = models.ForeignKey('Journey', related_name="transit_journey", on_delete=models.CASCADE)
-    start_milestone = models.ForeignKey('Milestone', related_name="transit_start_milestone", on_delete=models.PROTECT)
-    end_milestone = models.ForeignKey('Milestone', related_name="transit_end_milestone", on_delete=models.PROTECT)
+    journey = models.ForeignKey(
+        'Journey',
+        related_name="transits",
+        on_delete=models.CASCADE
+    )
+    start_milestone = models.OneToOneField(
+        'Milestone',
+        primary_key=True,
+        on_delete=models.CASCADE
+    )
+    end_milestone = models.OneToOneField(
+        'Milestone',
+        primary_key=True,
+        on_delete=models.CASCADE
+    )
     price = models.DecimalField(max_digits=20, decimal_places=2)
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
