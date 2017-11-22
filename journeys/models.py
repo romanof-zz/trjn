@@ -59,11 +59,13 @@ class Transit(models.Model):
     start_milestone = models.OneToOneField(
         'Milestone',
         primary_key=True,
+        related_name="start_milestone_of",
         on_delete=models.CASCADE
     )
     end_milestone = models.OneToOneField(
         'Milestone',
         primary_key=True,
+        related_name="end_milestone_of",
         on_delete=models.CASCADE
     )
     price = models.DecimalField(max_digits=20, decimal_places=2)
