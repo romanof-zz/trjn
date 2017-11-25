@@ -1,4 +1,11 @@
 <div>
-  <div>post: {{postId}}</div>
-  <a href="/profile/romanov">Back</a>
+  <b>{{post?.title}}</b>
+  <div [innerHTML]="post?.text"></div>
+  <small>
+    Posted on {{post?.created_at|date:'mediumDate'}} by
+    <a routerLink="/profile/{{post.author.username}}">{{post.author.first_name}} {{post.author.last_name}} </a>
+  </small>
+  <div *ngIf="backUrl">
+    <a routerLink="{{backUrl}}">Back</a>
+  </div>
 </div>

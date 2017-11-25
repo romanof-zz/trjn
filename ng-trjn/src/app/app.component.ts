@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import 'rxjs/add/operator/filter';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  previousUrl: string;
+
+  constructor(private router: Router) {
+    router.events.filter(event => event instanceof NavigationEnd)
+                 .subscribe(e => this.previousUrl = e.url);
+  }
 }

@@ -1,7 +1,10 @@
-from rest_framework.serializers import ModelSerializer
+from rest_framework.serializers import HyperlinkedModelSerializer
 from .models import (Post)
+from users.serializer import UserSerializer
 
-class PostSerializer(ModelSerializer):
+class PostSerializer(HyperlinkedModelSerializer):
+    author = UserSerializer()
+
     class Meta:
         model = Post
         fields = (

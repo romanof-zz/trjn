@@ -1,0 +1,13 @@
+<div>
+  <img [src]="(profile?.picture) || ''" />
+  <div>{{profile?.user.first_name}} {{profile?.user.last_name}}</div>
+  <div>
+    {{profile?.bio}}
+  </div>
+
+  <div *ngFor="let identity of profile?.identities">
+    <a href='http://{{identity.provider}}.com/{{identity.external_id}}' target="_blank">
+      <img src='/assets/{{identity.provider}}-128.png' />
+    </a>
+  </div>
+</div>

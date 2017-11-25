@@ -29,7 +29,6 @@ class ProfileSerializer(HyperlinkedModelSerializer):
     class Meta:
         model = Profile
         fields = (
-            'id',
             'bio',
             'picture',
             'user',

@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Host } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+
+import { AppComponent } from '../app.component';
+import { Post } from '../common/post';
+import { PostService } from '../common/post.service';
 
 @Component({
   selector: 'app-post-detail',
@@ -7,13 +11,19 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./post-detail.component.css']
 })
 export class PostDetailComponent implements OnInit {
-  postId: string;
+  post: Post;
+  backUrl: string;
 
   constructor(
-    private route: ActivatedRoute
-  ) { }
+    @Host() private app: AppComponent,
+    private route: ActivatedRoute,
+    private postService: PostService
+  ) {
+    this.backUrl = app.previousUrl
+  }
 
   ngOnInit() {
-    this.postId = this.route.snapshot.paramMap.get('postId');
+    this.postService.getPost(this.route.snapshot.paramMap.get('postId'))
+      .subscribe(post => this.post = post);
   }
 }
