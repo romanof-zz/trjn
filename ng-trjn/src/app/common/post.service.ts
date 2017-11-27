@@ -15,11 +15,11 @@ export class PostService {
     private http: HttpClient
   ) { }
 
-  getPosts(userId: number): Observable<Post[]> {
+  getPosts(userId: string): Observable<Post[]> {
     return this.http.get<Post[]>(`${this.postUrl}?author=${userId}`);
   }
 
-  getPost(postId: number): Observable<Post> {
+  getPost(postId: string): Observable<Post> {
     return this.http.get<Post>(`${this.postUrl}/${postId}`);
   }
 }

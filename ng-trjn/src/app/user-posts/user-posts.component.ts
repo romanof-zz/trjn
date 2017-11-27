@@ -17,7 +17,7 @@ export class UserPostsComponent implements OnInit {
 
   ngOnInit() { }
 
-  getUserPosts(userId: number) {
+  getUserPosts(userId: string) {
     this.postService.getPosts(userId)
       .subscribe(posts =>  {
         for (var post of posts) {
