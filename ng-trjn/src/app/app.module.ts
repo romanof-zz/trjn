@@ -11,6 +11,8 @@ import { UserPostsComponent } from './user-posts/user-posts.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 import { ProfileDetailComponent } from './profile-detail/profile-detail.component';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +22,7 @@ import { ProfileDetailComponent } from './profile-detail/profile-detail.componen
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     RoutingModule,
     HttpClientModule
   ],
