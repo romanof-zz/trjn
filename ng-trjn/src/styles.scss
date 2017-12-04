@@ -41,9 +41,12 @@ a {
   );
 }
 
-.mat-card {
-  @include linear-gradient(mat-color($accent, 500), mat-color($accent, 50));
+small {
+  font-size: 12px !important;
+  font-style: italic;
+}
 
+.mat-card {
   .mat-card-avatar {
     width: 80px;
     height: 80px;
@@ -81,14 +84,12 @@ a {
     white-space: normal;
     text-overflow: clip;
   }
-
-  .mat-list-item small.mat-line {
-    font-size: 12px !important;
-    font-style: italic;
-  }
 }
-
 
 .clear {
   clear: both;
+}
+
+.profile {
+  @include linear-gradient(mat-color($accent, 500), mat-color($accent, 50));
 }
