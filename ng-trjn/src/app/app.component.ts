@@ -13,8 +13,6 @@ export class AppComponent {
 
   constructor(private router: Router) {
     router.events.filter(event => event instanceof NavigationEnd)
-                 .subscribe(e => {
-                   if ('url' in e) this.previousUrl = e.url
-                 })
+                 .subscribe((e:NavigationEnd) => this.previousUrl = e.url)
   }
 }
