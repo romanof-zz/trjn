@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
 import 'rxjs/add/operator/filter';
+
+import { Component } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
@@ -12,6 +13,8 @@ export class AppComponent {
 
   constructor(private router: Router) {
     router.events.filter(event => event instanceof NavigationEnd)
-                 .subscribe(e => if ('url' in e) this.previousUrl = e.url);
+                 .subscribe(e => {
+                   if ('url' in e) this.previousUrl = e.url
+                 })
   }
 }

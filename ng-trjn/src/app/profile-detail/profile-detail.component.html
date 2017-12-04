@@ -1,13 +1,13 @@
-<div>
-  <img [src]="(profile?.picture) || ''" />
-  <div>{{profile?.user.first_name}} {{profile?.user.last_name}}</div>
-  <div>
-    {{profile?.bio}}
-  </div>
-
-  <div *ngFor="let identity of profile?.identities">
-    <a href='http://{{identity.provider}}.com/{{identity.external_id}}' target="_blank">
-      <img src='/assets/{{identity.provider}}-128.png' />
-    </a>
-  </div>
-</div>
+<mat-card>
+  <mat-card-header>
+    <img mat-card-avatar [src]="(profile?.picture) || ''" />
+    <mat-card-title>{{profile?.user.first_name}} {{profile?.user.last_name}}</mat-card-title>
+    <mat-card-subtitle>{{profile?.bio}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-actions *ngFor="let identity of profile?.identities">
+      <a mat-button href='http://{{identity.provider}}.com/{{identity.external_id}}' target="_blank">
+        <img src='/assets/{{identity.provider}}-128.png' />
+      </a>
+  </mat-card-actions>
+  <div class="clear"></div>
+</mat-card>

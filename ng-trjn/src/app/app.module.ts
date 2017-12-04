@@ -13,6 +13,8 @@ import { ProfileDetailComponent } from './profile-detail/profile-detail.componen
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { MatCardModule } from '@angular/material/card';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +26,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     BrowserAnimationsModule,
     RoutingModule,
-    HttpClientModule
+    HttpClientModule,
+
+    // material design components.
+    MatCardModule,
   ],
   providers: [
     ProfileService,
