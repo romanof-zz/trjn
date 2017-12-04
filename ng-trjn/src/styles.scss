@@ -15,13 +15,39 @@ $theme:   mat-light-theme($primary, $accent, $warn);
   background: linear-gradient($direction, $color-stops);
 }
 
+@mixin link($link, $visited, $hover, $active) {
+    & {
+        color: $link;
+        text-decoration: none;
+
+        &:visited {
+            color: $visited;
+        }
+        &:hover {
+            color: $hover;
+        }
+        &:active, &:focus {
+            color: $active;
+        }
+    }
+}
+
+a {
+  @include link(
+    mat-color($primary),
+    mat-color($primary, 300),
+    mat-color($primary),
+    mat-color($primary)
+  );
+}
+
 .mat-card {
-  @include linear-gradient(mat-color($primary, 500), mat-color($primary, 50));
+  @include linear-gradient(mat-color($accent, 500), mat-color($accent, 50));
 
   .mat-card-avatar {
     width: 80px;
     height: 80px;
-    border-color: mat-color($primary);
+    border-color: mat-color($accent);
   }
 
   .mat-card-header {
@@ -44,6 +70,23 @@ $theme:   mat-light-theme($primary, $accent, $warn);
   }
 }
 
+.mat-list {
+  .mat-list-item a.mat-line {
+    font-size: 18px;
+  }
+
+  .mat-list-item p.mat-line {
+    padding: 5px 0px 5px 0px;
+    overflow: visible;
+    white-space: normal;
+    text-overflow: clip;
+  }
+
+  .mat-list-item small.mat-line {
+    font-size: 12px !important;
+    font-style: italic;
+  }
+}
 
 
 .clear {

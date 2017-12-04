@@ -13,7 +13,7 @@ import { ProfileDetailComponent } from './profile-detail/profile-detail.componen
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MatCardModule } from '@angular/material/card';
+import { MatCardModule, MatListModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -30,6 +30,7 @@ import { MatCardModule } from '@angular/material/card';
 
     // material design components.
     MatCardModule,
+    MatListModule,
   ],
   providers: [
     ProfileService,
