@@ -5,8 +5,7 @@ import { PostService } from '../common/post.service';
 
 @Component({
   selector: 'app-user-posts',
-  templateUrl: './user-posts.component.html',
-  styleUrls: ['./user-posts.component.css']
+  templateUrl: './user-posts.component.html'
 })
 export class UserPostsComponent implements OnInit {
   posts: Post[] = [];

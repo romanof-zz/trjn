@@ -6,8 +6,7 @@ import { ProfileService } from '../common/profile.service';
 
 @Component({
   selector: 'app-profile-detail',
-  templateUrl: './profile-detail.component.html',
-  styleUrls: ['./profile-detail.component.css']
+  templateUrl: './profile-detail.component.html'
 })
 export class ProfileDetailComponent implements OnInit {
   profile: Profile;
