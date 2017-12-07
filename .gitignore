@@ -3,3 +3,6 @@
 __pycache__
 *.sqlite3
 *.cnf
+
+node_modules
+package-lock.json
