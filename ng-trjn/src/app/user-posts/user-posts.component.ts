@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 
 import { Post } from '../common/post';
 import { PostService } from '../common/post.service';
+import { listAnimation } from './user-posts.animations';
 
 @Component({
   selector: 'app-user-posts',
-  templateUrl: './user-posts.component.html'
+  templateUrl: './user-posts.component.html',
+  animations: [listAnimation]
 })
 export class UserPostsComponent implements OnInit {
   posts: Post[] = [];

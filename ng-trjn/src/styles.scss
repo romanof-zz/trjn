@@ -74,15 +74,19 @@ small {
 }
 
 .mat-list {
-  .mat-list-item a.mat-line {
-    font-size: 18px;
-  }
+  .mat-list-item {
+    border-bottom: 1px solid mat-color($primary, 50);
 
-  .mat-list-item p.mat-line {
-    padding: 5px 0px 5px 0px;
-    overflow: visible;
-    white-space: normal;
-    text-overflow: clip;
+    a.mat-line {
+      font-size: 18px;
+    }
+
+    p.mat-line {
+      padding: 5px 0px 5px 0px;
+      overflow: visible;
+      white-space: normal;
+      text-overflow: clip;
+    }
   }
 }
 
