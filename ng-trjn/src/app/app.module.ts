@@ -10,6 +10,7 @@ import { PostService } from './common/post.service';
 import { UserPostsComponent } from './user-posts/user-posts.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 import { ProfileDetailComponent } from './profile-detail/profile-detail.component';
+import { SafeHtmlPipe } from './safe.html';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -20,7 +21,8 @@ import { MatCardModule, MatListModule } from '@angular/material';
     AppComponent,
     UserPostsComponent,
     PostDetailComponent,
-    ProfileDetailComponent
+    ProfileDetailComponent,
+    SafeHtmlPipe
   ],
   imports: [
     BrowserModule,

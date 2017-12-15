@@ -2,13 +2,8 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
-from .models import (Identity, Profile)
+from .models import Profile
 import nested_admin
-
-class IdentityAdmin(nested_admin.NestedStackedInline):
-    model = Identity
-    classes = ('collapse',)
-    extra = 0
 
 class ProfileAdmin(nested_admin.NestedModelAdmin):
     readonly_fields = ('user',)
@@ -19,8 +14,7 @@ class ProfileAdmin(nested_admin.NestedModelAdmin):
     def has_delete_permission(self, request, obj=None):
         return False
 
-    inlines = [IdentityAdmin]
-    list_display = ('user', 'bio')
+    list_display = ('user',)
 
     def get_queryset(self, request):
         qs = super(ProfileAdmin, self).get_queryset(request)

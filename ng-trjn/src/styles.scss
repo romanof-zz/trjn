@@ -1,4 +1,5 @@
 @import '~@angular/material/theming';
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
 
 @include mat-core();
 
@@ -8,12 +9,6 @@ $warn:    mat-palette($mat-pink, 600);
 $theme:   mat-light-theme($primary, $accent, $warn);
 
 @include angular-material-theme($theme);
-
-@mixin linear-gradient($direction, $color-stops) {
-  background: nth(nth($color-stops, 1), 1);
-  background: -webkit-linear-gradient(legacy-direction($direction), $color-stops);
-  background: linear-gradient($direction, $color-stops);
-}
 
 @mixin link($link, $visited, $hover, $active) {
     & {
@@ -50,31 +45,13 @@ small {
   font-style: italic;
 }
 
-.mat-card {
-  .mat-card-avatar {
-    width: 80px;
-    height: 80px;
-    border-color: mat-color($accent);
-  }
-
-  .mat-card-header {
-    float: left;
-  }
-
-  .mat-card-actions {
-    float: right;
-    margin: -16px 0px 0px 0px;
-  }
-
-  .mat-card-actions img {
-    width: 50px;
-    height: 50px;
-  }
-
-  .mat-card-title {
-    font-size: 15px;
-    font-weight: bold;
-  }
+.profile {
+  position: relative;
+  padding: 0px !important;
+  height: 300px;
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),
+              0 2px 2px 0 rgba(0,0,0,.14),
+              0 1px 5px 0 rgba(0,0,0,.12);
 }
 
 .mat-list {
@@ -96,8 +73,4 @@ small {
 
 .clear {
   clear: both;
-}
-
-.profile {
-  @include linear-gradient(mat-color($accent, 500), mat-color($accent, 50));
 }

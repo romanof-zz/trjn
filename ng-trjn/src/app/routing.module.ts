@@ -5,7 +5,7 @@ import { UserPostsComponent }   from './user-posts/user-posts.component';
 import { PostDetailComponent }   from './post-detail/post-detail.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/profile/romanov', pathMatch: 'full' },
+  { path: '', redirectTo: '/profile/romanof', pathMatch: 'full' },
   { path: 'profile/:userName', component: UserPostsComponent, data: {state: 'profile'}},
   { path: 'posts/:postId', component: PostDetailComponent, data: {state: 'post'}}
 ];
