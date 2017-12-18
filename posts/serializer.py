@@ -9,6 +9,7 @@ class PostSerializer(HyperlinkedModelSerializer):
         model = Post
         fields = (
             'id',
+            'front_image_url',
             'title',
             'text',
             'author',

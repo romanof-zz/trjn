@@ -1,8 +1,12 @@
 <app-profile-detail (profileLoaded)="getUserPosts($event)"></app-profile-detail>
-<mat-list [@listAnimation]="posts.length">
-  <mat-list-item *ngFor="let post of posts">
-    <a matLine routerLink="/posts/{{post.id}}">{{post.title}}</a>
-    <p matLine>{{post.short_text}}</p>
-    <small matLine>{{post?.created_at|date:'mediumDate'}}</small>
-  </mat-list-item>
-</mat-list>
+
+<div class="user-posts" [@listAnimation]="posts.length">
+  <mat-card *ngFor="let post of posts">
+    <img mat-card-image src="{{post.front_image_url}}" />
+    <mat-card-title>{{post.title}}</mat-card-title>
+    <mat-card-content>
+      <p>{{post.short_text}}</p>
+      <small>{{post?.created_at|date:'mediumDate'}}</small>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -8,6 +8,7 @@ from tinymce.models import HTMLField
 
 class Post(models.Model):
     title = models.CharField(max_length=1024)
+    front_image_url = models.CharField(max_length=1024)
     text = HTMLField()
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL,

@@ -15,15 +15,9 @@ $theme:   mat-light-theme($primary, $accent, $warn);
         color: $link;
         text-decoration: none;
 
-        &:visited {
-            color: $visited;
-        }
-        &:hover {
-            color: $hover;
-        }
-        &:active, &:focus {
-            color: $active;
-        }
+        &:visited { color: $visited; }
+        &:hover { color: $hover; }
+        &:active, &:focus { color: $active; }
     }
 }
 
@@ -32,12 +26,7 @@ body {
 }
 
 a {
-  @include link(
-    mat-color($primary),
-    mat-color($primary, 300),
-    mat-color($primary),
-    mat-color($primary)
-  );
+  @include link(mat-color($primary), mat-color($primary, 300), mat-color($primary), mat-color($primary));
 }
 
 small {
@@ -45,32 +34,22 @@ small {
   font-style: italic;
 }
 
+.clear {
+  clear: both;
+}
+
 .profile {
   position: relative;
   padding: 0px !important;
   height: 300px;
-  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),
-              0 2px 2px 0 rgba(0,0,0,.14),
-              0 1px 5px 0 rgba(0,0,0,.12);
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
 }
 
-.mat-list {
-  .mat-list-item {
-    border-bottom: 1px solid mat-color($mat-grey, 200);
+.user-posts {
+  max-width: 800px;
+  margin: auto;
 
-    a.mat-line {
-      font-size: 18px;
-    }
-
-    p.mat-line {
-      padding: 5px 0px 5px 0px;
-      overflow: visible;
-      white-space: normal;
-      text-overflow: clip;
-    }
+  mat-card {
+    margin: 10px;
   }
-}
-
-.clear {
-  clear: both;
 }
