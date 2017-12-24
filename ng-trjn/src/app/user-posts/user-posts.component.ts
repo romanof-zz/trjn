@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Post } from '../common/post';
 import { PostService } from '../common/post.service';
 import { listAnimation } from './user-posts.animations';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-posts',
@@ -13,7 +14,8 @@ export class UserPostsComponent implements OnInit {
   posts: Post[] = [];
 
   constructor(
-    private postService: PostService
+    private postService: PostService,
+    private router: Router
   ) { }
 
   ngOnInit() { }
@@ -28,5 +30,17 @@ export class UserPostsComponent implements OnInit {
         }
         this.posts = posts
       });
+  }
+
+  navigateToDetails(postId: string) {
+    this.router.navigate(['/posts/' + postId]);
+  }
+
+  userPostsMouseEnter(event:any) {
+    event.target.classList.add("highlighted");
+  }
+
+  userPostsMouseLeave(event:any) {
+    event.target.classList.remove("highlighted");
   }
 }
