@@ -52,22 +52,22 @@ class Transit(models.Model):
     )
     transit_type = models.IntegerField(choices=SUPPORTED_TRANSIT_TYPES, default=1)
     journey = models.ForeignKey(
-        'Journey',
+        Journey,
         related_name="transits",
         on_delete=models.CASCADE
     )
-    start_milestone = models.OneToOneField(
-        'Milestone',
-        primary_key=True,
-        related_name="start_milestone_of",
-        on_delete=models.CASCADE
-    )
-    end_milestone = models.OneToOneField(
-        'Milestone',
-        primary_key=True,
-        related_name="end_milestone_of",
-        on_delete=models.CASCADE
-    )
+    # start_milestone = models.OneToOneField(
+    #     Milestone,
+    #     primary_key=True,
+    #     related_name="start_milestone_of",
+    #     on_delete=models.CASCADE
+    # )
+    # end_milestone = models.OneToOneField(
+    #     Milestone,
+    #     primary_key=True,
+    #     related_name="end_milestone_of",
+    #     on_delete=models.CASCADE
+    # )
     price = models.DecimalField(max_digits=20, decimal_places=2)
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
