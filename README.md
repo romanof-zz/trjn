@@ -9,35 +9,35 @@ remote workers and that sort of crowd.
 What can empower such community? (feel free to suggest more things) :
 
 1. help in **Discovery**:
-  1. personal **Itineraries** of other ppl to help explore the world out of beaten path.
-  2. **Tips** about places. both countries and cities to avoid mistakes.
-  3. **Recommendations for places** in the city: good co-working spaces, friendly coffee-shop, nomad food.
+  - personal **Itineraries** of other ppl to help explore the world out of beaten path.
+  - **Tips** about places. both countries and cities to avoid mistakes.
+  - **Recommendations for places** in the city: good co-working spaces, friendly coffee-shop, nomad food.
 2. help **Connecting** the community:
-  1. IRC rooms for places.
-  2. ppl in your area, meet-ups.
-  3. joint planning, expense-sharing?
+  - IRC rooms for places.
+  - ppl in your area, meet-ups.
+  - joint planning, expense-sharing?
 3. help **Sustaining** the community:
-  1. remote jobs.
-  2. helping content creators to monetize.
+  - remote jobs.
+  - helping content creators to monetize.
 
 ### Problems
 
 - there are very few centralized platforms that serve this community and bring it together. the most prominent ones are paid services (e.g nomad-list).
 - most of travel itinerary type content
-  - is not community driven. which puts top tourist stops on top.
-  - is location bound. mostly within cities.
-  - is time bound. mostly optimized for 1-2 week vacation times.
-  - is dis-organized. ppl write their own blogs, which makes it less useful for planning and discovery.
-  - is dis-jointed. again separate blogs make it hard to discover.
-  - most content is around US/EU, which makes other parts of the world hard explore.
+   - is not community driven. which puts top tourist stops on top.
+   - is location bound. mostly within cities.
+   - is time bound. mostly optimized for 1-2 week vacation times.
+   - is dis-organized. ppl write their own blogs, which makes it less useful for planning and discovery.
+   - is dis-jointed. again separate blogs make it hard to discover.
+   - most content is around US/EU, which makes other parts of the world hard explore.
 
 ### Multipliers
 
 - community is rapidly growing as long-term travel becomes more trendy.
 - remote work and flexible location also seems to become more normalized at least in tech community lately, which is another community growth driver.
 - structuring and organizing personal itinerary content allows:
-  - to explore opportunities to make it multi-lingual.
-  - combine recorded experiences of different ppl to customize the itinerary per customer in terms of price, duration and personal preferences.
+   - to explore opportunities to make it multi-lingual.
+   - combine recorded experiences of different ppl to customize the itinerary per customer in terms of price, duration and personal preferences.
 
 ### MVP
 
